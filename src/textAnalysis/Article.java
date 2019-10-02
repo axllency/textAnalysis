@@ -30,14 +30,14 @@ public class Article {
 	
 	
 	public Article(File txt) {
-		// Create a new 'article' object based off of a chosen text document. 
+		//Create a new 'article' object based off of a chosen text document. 
 		//Attributes of article ON CREATION: body of article
 		
 		//First step is try/catch: parse file to string.
 		//Can add in counters for # words, statements? (May need to count words later if line-based parsing)
 		
 		//Step 2: Regex to remove stop words based on a preset dictionary(?), string up to starting char + string after ending char. 
-		//forseeable issues with this approach: iterator? May need to change iteration numbers based on char index removal
+		//Foreseeable issues with this approach: iterator? May need to change iteration numbers based on char index removal
 	}
 	
 	
