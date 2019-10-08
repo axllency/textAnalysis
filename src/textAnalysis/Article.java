@@ -1,53 +1,105 @@
-/**
- * 
- */
 package textAnalysis;
 
+import java.util.Collection;
 import java.io.*;
+import java.util.HashMap;
 
-/**
- * @author ajfre
- *
- */
 public class Article {
-	/**
-	 * 
-	 */
-	//VARS:
-	//stop word collection/set/map? 'Stop words' are never going to change as far as this is concerned
 
-	//article title; type:string/ static
-	//article body; type:string?/ static
-	//article body preprocessed; type:string?
-	
-	//number of words/maybe just use a collection? can preprocess through a collection as well
-	//number of sentences
-	//collection of positive words. map? probably library
-	//collection of negative words. map? probably library
-	//map of word:frequency
-	//map of punctuation:frequency
-	//some sort of sentiment analysis object tbd
-	
-	
-	public Article(File txt) {
-		//Create a new 'article' object based off of a chosen text document. 
-		//Attributes of article ON CREATION: body of article
-		
-		//First step is try/catch: parse file to string.
-		//Can add in counters for # words, statements? (May need to count words later if line-based parsing)
-		
-		//Step 2: Regex to remove stop words based on a preset dictionary(?), string up to starting char + string after ending char. 
-		//Foreseeable issues with this approach: iterator? May need to change iteration numbers based on char index removal
-	}
-	
-	
-	//METHODS: 	get # words, get # sentences, get # etc.
-	//			get preproc version, get full version
-	//			create a method to do all the heavy-duty calculations instead of adding load to creation
-	//			unrolled loop? worth doing?
-	//			define a custom equal-to method defined based on article text
-	
-	//			may theoretically require a setter for body/preprocessed body if an external class is used 
-	
+    private static Collection<String> stopWordCol; // Stop Word Collection
+    private static Collection<String> punctuationCol; // Punctuation Collection
+    private String articleTitle; // Title of the Article
+    private String preProcArticleBody; // Article body before stop word and punctuation removal
+    private Collection<String> articleBody; // Article body as a collection of its words after processing
+    private int wordCount; // Number of words in the article
+    private HashMap<String, Integer> wordFrequency; // Map of each unique word in the article with the number of times it appears
+    private HashMap<String, Integer> punctuationFrequency; // Map of each unique punctuation in the article with the number of times it appears
+    //Statistic Analyzer object
+
+    public Article(String textFile)
+    {
+        //Convert text file to string and remove stop words and punctuation
+    }
+
+    private void calculatePuncFrequency()
+    {
+        for(char c : preProcArticleBody.toCharArray())
+        {
+            if(punctuationFrequency.containsKey(c)); // doesn't work
+        }
+    }
+
+    /**
+     * Calculates the number of words within the Article using their frequencies
+     */
+    private void calculateWordCount()
+    {
+        wordCount = 0;
+        for(Integer i: wordFrequency.values())
+        {
+            wordCount += i;
+        }
+    }
+
+    /**
+     * Gets the Title of the Article
+     * @return Article Title
+     */
+    public String getArticleTitle()
+    {
+        return articleTitle;
+    }
+
+    /**
+     * Gets the article body as a string before processing
+     * @return Preprocessed Article Body
+     */
+    public String getPreProcArticleBody()
+    {
+        return preProcArticleBody;
+    }
+
+    /**
+     * Gets the Article body as a collection of strings after processing
+     * @return Article body
+     */
+    public Collection<String> getArticleBody()
+    {
+        return articleBody;
+    }
+
+    /**
+     * Gets the number of words in the article body
+     * @return Word count
+     */
+    public int getWordCount()
+    {
+        return wordCount;
+    }
+
+    /**
+     * Gets the frequency of a specified String within the article body
+     * @param word String tested for frequency
+     * @return Number of times specified word appears in article body
+     */
+    public int getFrequencyOf(String word)
+    {
+        if(wordFrequency.containsKey(word))
+        {
+            return wordFrequency.get(word);
+        }
+        else if(punctuationFrequency.containsKey(word))
+        {
+            return punctuationFrequency.get(word);
+        }
+        else return 0;
+    }
+
+
+
+
+        //InputStream in = this.getClass().getResourceAsStream("stopWords.txt");
+        //String stopWords = in.toString();
+
 
 }
